@@ -100,4 +100,18 @@ class Human {
                 ", schedule=" + Arrays.deepToString(schedule) +
                 '}';
     }
+     @Override
+    public boolean equals(Object a) {
+        if (this == a) return true;
+        if (a == null || getClass() != a.getClass()) return false;
+        Human human = (Human) a;
+        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Arrays.deepEquals(schedule, human.schedule);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, surname, year, iq);
+        result = 31 * result + Arrays.deepHashCode(schedule);
+        return result;
+    }
 }

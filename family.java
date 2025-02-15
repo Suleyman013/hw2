@@ -71,4 +71,17 @@ class Family {
     public String toString() {
         return "Family = mother:"+ mother.toString() +"\nfather:"+ father.toString() + "\nchildren:" + Arrays.toString(children) + "\npet:" + pet.toString();
     }
+    @Override
+    public boolean equals(Object a) {
+        if (this == a) return true;
+        if (a == null || getClass() != a.getClass()) return false;
+        Family family = (Family) a;
+        return Objects.equals(mother, family.mother) && Objects.equals(father, family.father) && Arrays.equals(children, family.children) && Objects.equals(pet, family.pet);
+    }
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(mother, father, pet);
+        result = 31 * result + Arrays.hashCode(children);
+        return result;
+    }
 }

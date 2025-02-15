@@ -69,4 +69,18 @@ class pet {
     public String toString() {
         return species + "{nickname='" + nickname + "', age=" + age + ", trickLevel=" + trickLevel + ", habits=" + java.util.Arrays.toString(habits) + "}";
     }
+    @Override
+    public boolean equals(Object a) {
+        if (this == a)
+            return true;
+        if (a == null || getClass() != a.getClass()) return false;
+        pet pet = (pet) a;
+        return age == pet.age && trickLevel == pet.trickLevel && Objects.equals(species, pet.species) && Objects.equals(nickname, pet.nickname) && Arrays.equals(habits, pet.habits);
+    }
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(species, nickname, age, trickLevel);
+        result = 31 * result + Arrays.hashCode(habits);
+        return result;
+    }
 }

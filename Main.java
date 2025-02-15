@@ -31,5 +31,7 @@ public class Main {
         System.out.println("----------------------------");
         family2.removeChild(jimmy);
         System.out.println(family2);
+         System.out.println("Number of family members: " + family1.Memmebersoffamily());
+        System.out.println("Number of family members: " + family2.Memmebersoffamily());
     }
 }
